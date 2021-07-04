@@ -96,7 +96,7 @@ app.post("/soundboard-text-twiml", (req, res) => {
     );
   } else {
     twiml.message(
-      `🤷‍♂️ Sorry, we couldn't play your request "${soundName}". Try again?`
+      `🤷‍♂️ Sorry, we couldn't play your request "${soundName}". Try one of these: ${soundboard.getKeywords().join(", ")}`
     );
   }
   res.type("xml");

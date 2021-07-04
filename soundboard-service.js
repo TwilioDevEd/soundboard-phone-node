@@ -22,7 +22,8 @@ const sounds = {
 const keywords = Object.values(sounds).reduce((acc, props) => {
   acc.push(...props.keywords);
   return acc;
-}, []);
+}, [])
+  .sort();
 
 class SoundboardService extends EventEmitter {
   constructor() {
