@@ -1,0 +1,88 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://twilio-labs.github.io/function-templates/static/v1/ce-paste-theme.css"
+    />
+    <script
+      src="https://twilio-labs.github.io/function-templates/static/v1/ce-helpers.js"
+      defer
+    ></script>
+    <title>Soundboard</title>
+  </head>
+  <body>
+    <div class="page-top">
+      <header>
+        <div id="twilio-logo">
+          <a href="https://www.twilio.com/" target="_blank" rel="noopener">
+            <svg
+              class="logo"
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewbox="0 0 60 60"
+            >
+              <title>Twilio Logo</title><path
+                class="cls-1"
+                d="M30,15A15,15,0,1,0,45,30,15,15,0,0,0,30,15Zm0,26A11,11,0,1,1,41,30,11,11,0,0,1,30,41Zm6.8-14.7a3.1,3.1,0,1,1-3.1-3.1A3.12,3.12,0,0,1,36.8,26.3Zm0,7.4a3.1,3.1,0,1,1-3.1-3.1A3.12,3.12,0,0,1,36.8,33.7Zm-7.4,0a3.1,3.1,0,1,1-3.1-3.1A3.12,3.12,0,0,1,29.4,33.7Zm0-7.4a3.1,3.1,0,1,1-3.1-3.1A3.12,3.12,0,0,1,29.4,26.3Z"
+              ></path></svg>
+          </a>
+        </div>
+        <nav>
+          <div><a
+              href="https://twilio.com/quest?utm_source=gh-badge&utm_medium=referral&utm_campaign=soundboard-phone"
+            >
+              <img
+                alt="TwilioQuest: Learn to code"
+                src="https://img.shields.io/static/v1?label=TwilioQuest&message=Learn%20to%20code%21&color=F22F46&labelColor=1f243c&style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAASFBMVEUAAAAZGRkcHBwjIyMoKCgAAABgYGBoaGiAgICMjIyzs7PJycnMzMzNzc3UoBfd3d3m5ubqrhfrMEDu7u739/f4vSb/3AD///9tbdyEAAAABXRSTlMAAAAAAMJrBrEAAAKoSURBVHgB7ZrRcuI6EESdyxXGYoNFvMD//+l2bSszRgyUYpFAsXOeiJGmj4NkuWx1Qeh+Ekl9DgEXOBwOx+Px5xyQhDykfgq4wG63MxxaR4ddIkg6Ul3g84vCIcjPBA5gmUMeXESrlukuoK33+33uID8TWeLAdOWsKpJYzwVMB7bOzYSGOciyUlXSn0/ABXTosJ1M1SbypZ4O4MbZuIDMU02PMbauhhHMHXbmebmALIiEbbbbbUrpF1gwE9kFfRNAJaP+FQEXCCTGyJ4ngDrjOFo3jEL5JdqjF/pueR4cCeCGgAtwmuRS6gDwaRiGvu+DMFwSBLTE3+jF8JyuV1okPZ+AC4hDFhCHyHQjdjPHUKFDlHSJkHQXMB3KpSwXNGJPcwwTdZiXlRN0gSp0zpWxNtM0beYE0nRH6QIbO7rawwXaBYz0j78gxjokDuv12gVeUuBD0MDi0OQCLvDaAho4juP1Q/jkAncXqIcCfd+7gAu4QLMACCLxpRsSuQh0igu0C9Svhi7weAGZg50L3IE3cai4IfkNZAC8dfdhsUD3CgKBVC9JE5ABAFzg4QL/taYPAAWrHdYcgfLaIgAXWJ7OV38n1LEF8tt2TH29E+QAoDoO5Ve/LtCQDmKM9kPbvCEBApK+IXzbcSJ0cIGF6e8gpcRhUDogWZ8JnaWjPXc/fNnBBUKRngiHgTUSivSzDRDgHZQOLvBQgf8rRt+VdBUUhwkU6VpJ+xcOwQUqZr+mR0kvBUgv6cB4+37hQAkXqE8PwGisGhJtN4xAHMzrsgvI7rccXqSvKh6jltGlrOHA3Xk1At3LC4QiPdX9/0ndHpGVvTjR4bZA1ypAKgVcwE5vx74ulwIugDt8e/X7JgfkucBMIAr26ndnB4UCLnDOqvteQsHlgX9N4A+c4cW3DXSPbwAAAABJRU5ErkJggg=="
+              />
+            </a></div>
+
+          <section>
+            <!-- Project Helper -->
+            <!-- ✂️ Copy this script to your project's view: -->
+            <script src="https://button.glitch.me/button.js"></script>
+            <!-- ✂️ Copy this to wherever you want the button to show: -->
+            <div class="glitchButton"></div>
+          </section>
+
+        </nav>
+      </header>
+    </div>
+
+    <main>
+      <div class="content">
+        <h1>Soundboard Phone</h1>
+        <section>
+          <p>This project is using
+            <a href="https://twilio.com/media-streams">Twilio Programmable
+              MediaStreams</a>
+            to create a telephone based soundboard.</p>
+
+          <p>Call
+            <a href="tel:{{soundboardNumber}}">{{soundboardNumber}}</a>
+            to be connected to a soundboard. Speak one of the available sounds
+            to hear it. Or text it in to this number.
+          </p>
+
+          <p>This optionally uses a conference line
+            <a href="tel:{{conferenceNumber}}">{{conferenceNumber}}</a>
+            that will be automatically connected to the Soundboard.</p>
+        </section>
+        <section>
+          <h2>Available sounds</h2>
+          <ul>
+            {{#each keywords}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <span class="statement">We can't wait to see what you build.</span>
+    </footer>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const hbs = require("express-handlebars");
 const expressWebSocket = require("express-ws");
 const websocketStream = require("websocket-stream/stream");
 const Twilio = require("twilio");
@@ -12,11 +13,23 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.static("public"));
+app.engine("hbs", hbs());
+app.set("view engine", "hbs");
+
 app.use(express.urlencoded({ extended: true }));
 
 // extend express app with app.ws()
 expressWebSocket(app, null, {
   perMessageDeflate: false,
+});
+
+app.get("/", (req,res) => {
+  res.render("index", {
+    layout: false,
+    conferenceNumber: process.env.CONFERENCE_NUMBER,
+    soundboardNumber: process.env.SOUNDBOARD_NUMBER,
+    keywords: soundboard.getKeywords()
+  });
 });
 
 // On incoming call, dial the conference
